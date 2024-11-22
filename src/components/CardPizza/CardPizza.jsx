@@ -11,7 +11,7 @@ const CardPizza = ({ name, price, ingredients, img, desc ="" }) => {
         <p className="tituloCard mb-0">Pizza {name}</p>
       </Card.Header>
       <Card.Body >
-        <p className="mb-2">{desc}</p>
+        <p className="mb-2 text-start">{desc}</p>
         <p className="mb-2">🍕 Ingredientes:</p>
         <ul className="m-0 listaIngredientes">
           {ingredients.map((ingrediente) =>
