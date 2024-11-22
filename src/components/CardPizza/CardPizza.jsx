@@ -2,9 +2,7 @@ import { Card, Button } from "react-bootstrap"
 import { setearValor } from '../../assets/utils/funciones.js'
 import './CardPizza.css'
 
-const CardPizza = ({ name, price, ingredients, img }) => {
-
-  const ingredientes = ingredients.join(", ");
+const CardPizza = ({ name, price, ingredients, img, desc ="" }) => {
 
   return (
     <Card className="card mt-3" bg="light">
@@ -13,9 +11,10 @@ const CardPizza = ({ name, price, ingredients, img }) => {
         <p className="tituloCard mb-0">Pizza {name}</p>
       </Card.Header>
       <Card.Body >
+        <p className="mb-2">{desc}</p>
         <p className="mb-2">🍕 Ingredientes:</p>
         <ul className="m-0 listaIngredientes">
-          {ingredients.map(ingrediente =>
+          {ingredients.map((ingrediente) =>
             <li key={ingrediente}>{ingrediente}</li>
           )}
         </ul>

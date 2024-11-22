@@ -1,8 +1,7 @@
+import { useEffect, useState } from 'react'
 import CardPizza from '../CardPizza/CardPizza'
 import Header from '../Header/Header'
 import './Home.css'
-// import { pizzas } from '../../assets/js/pizzas'
-import { useEffect, useState } from 'react'
 
 
 const Home = () => {
@@ -18,6 +17,9 @@ const Home = () => {
     const data = await res.json()
     setPizzas(data)
   }
+
+  if(!pizzas) return <div>Cargando...</div>
+
   return (
     <>
       <Header />
