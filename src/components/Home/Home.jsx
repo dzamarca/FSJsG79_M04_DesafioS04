@@ -3,22 +3,19 @@ import CardPizza from '../CardPizza/CardPizza'
 import Header from '../Header/Header'
 import './Home.css'
 
-
 const Home = () => {
   const [pizzas, setPizzas] = useState([])
   const URL = 'http://localhost:5000/api/pizzas'
-  
+
   useEffect(() => {
     loadPizzas()
   }, [])
-  
-  const loadPizzas = async ()=>{
+
+  const loadPizzas = async () => {
     const res = await fetch(URL)
     const data = await res.json()
     setPizzas(data)
   }
-
-  if(!pizzas) return <div>Cargando...</div>
 
   return (
     <>
@@ -35,9 +32,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-
     </>
   )
 }
-
 export default Home

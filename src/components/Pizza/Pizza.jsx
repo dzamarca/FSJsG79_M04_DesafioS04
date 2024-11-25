@@ -2,31 +2,34 @@ import { useState, useEffect } from "react"
 import CardPizza from "../CardPizza/CardPizza"
 
 const Pizza = () => {
-    const [pizza, setPizza] = useState(null)
-
+    const [pizzaUnitaria, setPizzaUnitaria] = useState([])
     const URL = 'http://localhost:5000/api/pizzas/p001'
 
     useEffect(() => {
         const loadPizza = async () => {
             const res = await fetch(URL)
             const data = await res.json()
-            setPizza(data)
+            setPizzaUnitaria([data])
         }
         loadPizza()
     }, [])
 
-    if(!pizza) return <div>Cargando...</div>
-
     return (
-        <div className="d-flex justify-content-center mb-4">
-            <CardPizza
-                name={pizza.name}
-                price={pizza.price}
-                ingredients={pizza.ingredients}
-                img={pizza.img}
-                desc ={pizza.desc}
-            />
-        </div>
+        <>
+            <div className='boxCards'>
+                {pizzaUnitaria.map(pizza => (
+                    <div key={pizza.id} className="d-flex justify-content-center mb-4 col-12 col-md-6 col-lg-4">
+                        <CardPizza
+                            name={pizza.name}
+                            price={pizza.price}
+                            ingredients={pizza.ingredients}
+                            img={pizza.img}
+                            desc={pizza.desc}
+                        />
+                    </div>
+                ))}
+            </div>
+        </>
     )
 }
 
